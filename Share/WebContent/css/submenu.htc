@@ -1,0 +1,17 @@
+<component>
+<attach for="element" event="onmouseover"
+ ONEVENT="hig_lite()" />
+<attach for="element" event="onmouseout"
+ ONEVENT="low_lite()" />
+
+<script type="text/javascript">
+function hig_lite()
+{
+  element.className = "submenu_mouseover";
+}
+function low_lite()
+{
+  element.className = "submenu";
+}
+</script>
+</component>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+	
+<web-app>
+
+	<servlet>
+    	<servlet-name>JSONRPCServlet</servlet-name>
+    	<servlet-class>org.jabsorb.JSONRPCServlet</servlet-class>
+    	<init-param>
+      		<param-name>gzip_threshold</param-name>
+      		<param-value>200</param-value>
+    	</init-param>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>WeChatServlet</servlet-name>
+    	<servlet-class>com.wechat.Entrance</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>EocOnlineStatus</servlet-name>
+    	<servlet-class>com.service.maintain.EocOnlineStatus</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>EocPCPortStatus</servlet-name>
+    	<servlet-class>com.service.maintain.EocPCPortStatus</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>PCPortVlanStatus</servlet-name>
+    	<servlet-class>com.service.maintain.PCPortVlanStatus</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>RFStatus</servlet-name>
+    	<servlet-class>com.service.maintain.RFStatus</servlet-class>
+  	</servlet>
+  	
+	<servlet-mapping>
+    	<servlet-name>JSONRPCServlet</servlet-name>
+    	<url-pattern>/JSON-RPC</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>WeChatServlet</servlet-name>
+    	<url-pattern>/WECHAT</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>EocOnlineStatus</servlet-name>
+    	<url-pattern>/service/eocOnlineStatus</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>EocPCPortStatus</servlet-name>
+    	<url-pattern>/service/eocPCPortStatus</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>PCPortVlanStatus</servlet-name>
+    	<url-pattern>/service/PCPortVlanStatus</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>RFStatus</servlet-name>
+    	<url-pattern>/service/RFStatusStatus</url-pattern>
+  	</servlet-mapping>
+
+  	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Service Module</web-resource-name>
+			<url-pattern>/service/*</url-pattern>
+		</web-resource-collection>
+		
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+</web-app>
